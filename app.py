@@ -4,7 +4,9 @@ import pandas as pd
 import joblib
 import requests
 from xgboost import XGBClassifier, XGBRegressor
-
+from dotenv import load_dotenv
+import os
+load_dotenv()  # loads .env file
 # ---------------------------
 # CONFIG
 # ---------------------------
@@ -37,7 +39,8 @@ crop_model, yield_model, label_encoder, crop_columns, yield_columns = load_model
 # WEATHER API
 # ---------------------------
 def get_weather(city):
-    api_key = "324632143b2966f76a00fe77a0b3938d"
+    import os
+    api_key = os.getenv("API_KEY")
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
     try:

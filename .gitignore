@@ -7,3 +7,4 @@ env/
 *.joblib
 *.csv
 *.json
+.env
